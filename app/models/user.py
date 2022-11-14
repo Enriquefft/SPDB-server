@@ -1,5 +1,4 @@
 from . import db
-from sqlalchemy_utils import EmailType
 
 PERMIT_LIST = {
     #  CRUD
@@ -24,7 +23,7 @@ class User(db.Model):  # type: ignore
     sp_id = db.Column(db.String(128), nullable=True, unique=True)
     sp_uri = db.Column(db.String(128), nullable=True, unique=True)
     sp_username = db.Column(db.String(128), nullable=True, unique=True)
-    email = db.Column(EmailType(), unique=True, nullable=True)
+    email = db.Column(db.String(128), unique=True, nullable=True)
     refresh_token = db.Column(db.String(256), nullable=True, unique=True)
     img_url = db.Column(db.String(256), nullable=True, unique=False)
 

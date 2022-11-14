@@ -14,7 +14,7 @@ flask-restful = "*"
 flask-jwt-extended = "*"
 wheel = "*"
 gunicorn = "*"
-psycopg2-binary = "*"
+psycopg2 = "*"
 
 [dev-packages]
 pip-chill = "*" #pip-chill --no-chill > requirements.txt
