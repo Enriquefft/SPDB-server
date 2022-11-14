@@ -12,9 +12,9 @@ flask-migrate = "*"
 sqlalchemy-utils = "*"
 flask-restful = "*"
 flask-jwt-extended = "*"
-psycopg2 = "*"
 wheel = "*"
 gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 pip-chill = "*" #pip-chill --no-chill > requirements.txt
