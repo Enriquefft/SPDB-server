@@ -15,8 +15,10 @@ def create_app(config_class):
     from app.models import db
     db.init_app(app)
 
-    with app.app_context():
-        db.create_all()
+    # CREATE TABLES
+    #from app.models import user, tables
+    # with app.app_context():
+    #    db.create_all()
 
     from flask_jwt_extended import JWTManager
     jwt = JWTManager(app)
