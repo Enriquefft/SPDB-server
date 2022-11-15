@@ -1,7 +1,8 @@
 try:
-    from Constants import CLIENT_ID, CLIENT_SECRET, DEV_URI, PROD_URI, SECRET_KEY, JWT_SECRET_KEY
-except ImportError:
+    from Constants import CLIENT_ID, CLIENT_SECRET, SECRET_KEY, JWT_SECRET_KEY
+except ImportError as error:
     from sys import exit
+    print(error)
     exit("Please, ensure you have a Constants.py file with the CLIENT_ID, CLIENT_SECRET And INIT_URI variables.")
 
 
@@ -18,10 +19,12 @@ class BaseConfig:
 
 
 class ProdConfig(BaseConfig):
+    from Constants import PROD_URI
     SQLALCHEMY_DATABASE_URI = PROD_URI
 
 
 class DevConfig(BaseConfig):
+    from Constants import DEV_URI
     SQLALCHEMY_DATABASE_URI = DEV_URI
     #EXPLAIN_TEMPLATE_LOADING = True
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
