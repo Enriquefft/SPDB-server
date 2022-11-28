@@ -22,7 +22,12 @@ class login(Resource):
         if not user.validate_password(data.get('password')):
             abort(404, error='invalid password')
 
-        return {
+        response = {
             'username': user.username,
-            'access_token': create_access_token(user.id)
-        }, 200
+            'access_token': create_access_token(user)
+        }
+
+        response['isAuthorized'] = user.has_authorized()
+        print(user.has_authorized())
+
+        return response, 200

@@ -2,6 +2,8 @@
 CLIENT_ID = '5b0ac652d91f4d2a89f62f99d568cd34'
 CLIENT_SECRET = '2f7d51425a7143b99d37809c39d2b1f1'
 
+FERNET_KEY = b'NyklX3e5H0HV_2YPLGNBQGtAC17XmUh8QCyuDg70z5A='
+
 # postgres URI's
 PROD_URI = 'postgresql://enrique:FBgPEPpVw5lf8DEHiaa7MfSMJ9isFFQD@dpg-cdpcht6n6mpuqruogut0-a.ohio-postgres.render.com/production_qcv4'
 DEV_URI = 'postgresql://superu:Ep1w08kk05c@localhost:5432/development'

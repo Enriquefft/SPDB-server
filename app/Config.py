@@ -1,5 +1,5 @@
 try:
-    from Constants import CLIENT_ID, CLIENT_SECRET, SECRET_KEY, JWT_SECRET_KEY
+    from Constants import CLIENT_ID, CLIENT_SECRET, SECRET_KEY, JWT_SECRET_KEY, FERNET_KEY
 except ImportError as error:
     from sys import exit
     print(error)
@@ -14,6 +14,7 @@ class BaseConfig:
     SECRET_KEY = SECRET_KEY
     BUNDLE_ERRORS = True  # error handling as bundle
     JWT_SECRET_KEY = JWT_SECRET_KEY
+    FERNET_KEY = FERNET_KEY
 
     #CORS_HEADERS = "Content-Type"
 

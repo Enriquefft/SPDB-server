@@ -12,6 +12,7 @@ class Model(model.Model):
             db.session.commit()
             return self.format()
         except Exception as e:
+            print('error: ', e)
             db.session.rollback()
             return None
         finally:
@@ -19,25 +20,20 @@ class Model(model.Model):
 
     def format(self):
         dic = vars(self)
-        #dic.pop('pass_hash', None)
+        dic.pop('pass_hash', None)
         return dic
 
     def update(self):
-        error = False
 
-        print("UPDATE:")
-        print(self.format())
-        print()
         try:
             db.session.commit()
         except Exception as e:
             print('error: ', e)
             error = True
             db.session.rollback()
+            return error
         finally:
             db.session.close()
-
-        return self, error
 
     def delete(self):
         error = False

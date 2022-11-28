@@ -27,6 +27,10 @@ class User(db.Model):  # type: ignore
     refresh_token = db.Column(db.String(256), nullable=True, unique=True)
     img_url = db.Column(db.String(256), nullable=True, unique=False)
 
+    def __init__(self, username, password_hash):
+        self.username = username
+        self.pass_hash = password_hash
+
     def validate_password(self, password):
         from werkzeug.security import check_password_hash
         return check_password_hash(self.pass_hash, password)
@@ -72,11 +76,7 @@ class User(db.Model):  # type: ignore
         post_request = post("https://accounts.spotify.com/api/token",
                             data=request_body, headers=request_headers)
 
-        from json import loads
-        response = loads(post_request.text)
-
         if post_request.status_code != 200:
             raise Exception("Error")
 
-        from flask import session
-        session['access_token'] = response['access_token']
+        return post_request.json().get('access_token')

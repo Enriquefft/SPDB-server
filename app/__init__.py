@@ -2,7 +2,7 @@
 from flask import Flask
 
 
-def create_app(config_class):
+def create_app(config_class='Dev'):
 
     verifyConfClass(config_class)
 
@@ -30,6 +30,16 @@ def create_app(config_class):
     from app.resources.blueprints import user_bp, home_bp
     app.register_blueprint(user_bp)
     app.register_blueprint(home_bp)
+
+    @jwt.user_identity_loader
+    def user_identity_lookup(user):
+        return user.id
+
+    @jwt.user_lookup_loader
+    def user_lookup_callback(_jwt_header, jwt_data):
+        from app.models.user import User
+        identity = jwt_data["sub"]
+        return User.query.filter_by(id=identity).one_or_none()
 
     return app
 

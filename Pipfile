@@ -15,6 +15,7 @@ flask-jwt-extended = "*"
 wheel = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+cryptography = "*"
 
 [dev-packages]
 pip-chill = "*" #pip-chill --no-chill > requirements.txt
